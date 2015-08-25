@@ -76,6 +76,17 @@ prompt_context() {
   fi
 }
 
+prompt_rvm() {
+  local rvm_ruby=''
+  if which rvm-prompt &> /dev/null; then
+    prompt_segment $PRIMARY_FG default "$(rvm-prompt i v g)"
+  else
+    if which rbenv &> /dev/null; then
+      prompt_segment $PRIMARY_FG default "$(rbenv version | sed -e "s/ (set.*$//")"
+    fi
+  fi
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
   local color ref
@@ -128,6 +139,7 @@ prompt_agnoster_main() {
   prompt_context
   prompt_dir
   prompt_git
+  prompt_rvm
   prompt_end
 }
 
