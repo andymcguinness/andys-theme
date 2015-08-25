@@ -36,6 +36,7 @@ DETACHED="\u27a6"
 CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
+GEM="\U0001F48E"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -77,12 +78,11 @@ prompt_context() {
 }
 
 prompt_rvm() {
-  local rvm_ruby=''
   if which rvm-prompt &> /dev/null; then
-    prompt_segment $PRIMARY_FG default "$(rvm-prompt i v g)"
+    prompt_segment $PRIMARY_FG default  "$GEM $(rvm-prompt i v g)"
   else
     if which rbenv &> /dev/null; then
-      prompt_segment $PRIMARY_FG default "$(rbenv version | sed -e "s/ (set.*$//")"
+      prompt_segment $PRIMARY_FG default "$GEM $(rbenv version | sed -e "s/ (set.*$//")"
     fi
   fi
 }
