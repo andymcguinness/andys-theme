@@ -14,6 +14,7 @@ DETACHED="\u27a6"
 CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
+GEM="\U0001F48E"
 
 ## Create Prompt Segments
 at_return_code() {
@@ -30,10 +31,10 @@ at_current_dir() {
 
 at_rvm_ruby() {
   if which rvm-prompt &> /dev/null; then
-    print -n "%{$fg[red]%}$(rvm-prompt i v g)%{$reset_color%}"
+    print -n "$GEM %{$fg[red]%}$(rvm-prompt i v g)%{$reset_color%}"
   else
     if which rbenv &> /dev/null; then
-      print -n "%{$fg[red]%}$(rbenv version | sed -e "s/ (set.*$//")%{$reset_color%}"
+      print -n "$GEM %{$fg[red]%}$(rbenv version | sed -e "s/ (set.*$//")%{$reset_color%}"
     fi
   fi
 }
