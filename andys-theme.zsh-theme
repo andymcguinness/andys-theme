@@ -57,7 +57,7 @@ at_git_branch() {
     else
       ref="$DETACHED ${ref/.../}"
     fi
-    print -n "%{$fg[color]}" 
+    print -n "%{$fg[color]%}" 
     print -Pn " $ref"
   fi
 }
