@@ -39,13 +39,38 @@ at_rvm_ruby() {
 }
 
 at_git_branch() {
-  print -n "$BRANCH $(git_prompt_info)%{$reset_color%}"
+  local color ref
+  is_dirty() {
+    test -n "$(git status --porcelain --ignore-submodules)"
+  }
+  ref="$vcs_info_msg_0_"
+  if [[ -n "$ref" ]]; then
+    if is_dirty; then
+      color=yellow
+      ref="${ref} $PLUSMINUS"
+    else
+      color=green
+      ref="${ref} "
+    fi
+    if [[ "${ref/.../}" == "$ref" ]]; then
+      ref="$BRANCH $ref"
+    else
+      ref="$DETACHED ${ref/.../}"
+    fi
+    print -n "%{$fg[color]}" 
+    print -Pn " $ref"
+  fi
 }
 
 ## Prompt Generation
+at_prompt_precmd() {
+  vcs_info
+  PROMPT='%{%f%b%k%}$(at_generate_prompt) '
+}
+
 at_generate_prompt() {
   PROMPT="╭─$(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
-    ╰─%B$%b "
+╰─%B$%b "
   RPS1="$(at_return_code)"
 }
 
@@ -53,8 +78,18 @@ at_prompt_setup() {
   ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
   ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
 
-  at_generate_prompt
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  prompt_opts=(cr subst percent)
+
+  add-zsh-hook precmd at_prompt_precmd
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' check-for-changes false
+  zstyle ':vcs_info:git*' formats '%b'
+  zstyle ':vcs_info:git*' actionformats '%b (%a)'
 }
 
 ## Fire!
-at_prompt_setup
+at_prompt_setup "$@"
