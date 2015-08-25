@@ -21,19 +21,19 @@ at_return_code() {
 }
 
 at_user_host() {
-  print -n "%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}" 
+  print -n "%{$terminfo[normal]$fg[green]%}%n@%m%{$reset_color%}" 
 }
 
 at_current_dir() {
-  print -n "%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}"
+  print -n "%{$terminfo[normal]$fg[blue]%} %~%{$reset_color%}"
 }
 
 at_rvm_ruby() {
   if which rvm-prompt &> /dev/null; then
-    print -n "%{$fg[red]%}‹$(rvm-prompt i v g)›%{$reset_color%}"
+    print -n "%{$fg[red]%}$(rvm-prompt i v g)%{$reset_color%}"
   else
     if which rbenv &> /dev/null; then
-      print -n "%{$fg[red]%}‹$(rbenv version | sed -e "s/ (set.*$//")›%{$reset_color%}"
+      print -n "%{$fg[red]%}$(rbenv version | sed -e "s/ (set.*$//")%{$reset_color%}"
     fi
   fi
 }
@@ -45,7 +45,7 @@ at_git_branch() {
 ## Prompt Generation
 at_generate_prompt() {
   PROMPT="╭─$(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
-  ╰─%B$%b "
+    ╰─%B$%b "
   RPS1="$(at_return_code)"
 }
 
