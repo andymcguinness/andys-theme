@@ -24,7 +24,7 @@ at_user_host() {
   print -n "%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}" 
 }
 
-at_curent_dir() {
+at_current_dir() {
   print -n "%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}"
 }
 
