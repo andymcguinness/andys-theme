@@ -79,10 +79,10 @@ prompt_context() {
 
 prompt_rvm() {
   if which rvm-prompt &> /dev/null; then
-    prompt_segment red default  " $GEM $(rvm-prompt i v g) "
+    prompt_segment red $PRIMARY_FG  " $GEM $(rvm-prompt i v g) "
   else
     if which rbenv &> /dev/null; then
-      prompt_segment red default " $GEM $(rbenv version | sed -e "s/ (set.*$//") "
+      prompt_segment red $PRIMARY_FG " $GEM $(rbenv version | sed -e "s/ (set.*$//") "
     fi
   fi
 }
