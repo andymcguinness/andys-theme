@@ -66,7 +66,7 @@ at_git_branch() {
 ## Prompt Generation
 at_prompt_precmd() {
   vcs_info
-  PROMPT='%{%f%b%k%}$(at_generate_prompt) '
+  PROMPT='%{%f%b%k%}%{$fg[green]%}$(virtualenv_prompt_info)%{$reset_color%}%$(at_generate_prompt) '
 }
 
 at_generate_prompt() {
