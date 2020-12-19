@@ -66,11 +66,11 @@ at_git_branch() {
 ## Prompt Generation
 at_prompt_precmd() {
   vcs_info
-  PROMPT='%{%f%b%k%}%{$fg[green]%}$(virtualenv_prompt_info)%{$reset_color%}%$(at_generate_prompt) '
+  PROMPT='%{%f%b%k%}$(at_generate_prompt) '
 }
 
 at_generate_prompt() {
-  print -n "╭─$(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
+  print -n "╭─$(basename $CONDA_DEFAULT_ENV) $(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
 ╰─%B$%b "
   RPS1="$(at_return_code)"
 }
