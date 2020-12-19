@@ -65,7 +65,8 @@ at_git_branch() {
 
 at_conda_venv () {
   if [[ ! $(conda info | awk "{print $4}" | sed -n "2p") == "None" ]]; then
-    print -n "%{$fg[blue]%}$(conda info | awk "{print $4}" | sed -n "2p")%{$reset_color%}"
+    ## print -n "$(conda info | awk "{print $4}" | sed -n "2p")"
+    print -n "hello"
   fi
 }
 
