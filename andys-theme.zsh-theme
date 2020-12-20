@@ -67,7 +67,6 @@ at_git_branch() {
 at_prompt_precmd() {
   vcs_info
   PROMPT='%{%f%b%k%}$(at_generate_prompt) '
-  PROMPT+='%{$fg[green]%}$(conda info | awk '{print $4}' | sed -n '2p')%{$reset_color%}%'
 }
 
 at_generate_prompt() {
