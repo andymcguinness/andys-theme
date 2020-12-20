@@ -63,18 +63,15 @@ at_git_branch() {
   fi
 }
 
-at_conda_venv () {
-  print -n "$CONDA_PROMPT_MODIFIER"
-}
-
 ## Prompt Generation
 at_prompt_precmd() {
   vcs_info
   PROMPT='%{%f%b%k%}$(at_generate_prompt) '
+  PROMPT+='%{$fg[green]%}$(conda info | awk '{print $4}' | sed -n '2p')%{$reset_color%}%'
 }
 
 at_generate_prompt() {
-  print -n "╭─test $(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
+  print -n "╭─$(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
 ╰─%B$%b "
   RPS1="$(at_return_code)"
 }
