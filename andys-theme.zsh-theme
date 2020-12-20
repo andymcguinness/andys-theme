@@ -74,7 +74,7 @@ at_prompt_precmd() {
 }
 
 at_generate_prompt() {
-  print -n "╭─$(at_conda_venv) $(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
+  print -n "╭─test $(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
 ╰─%B$%b "
   RPS1="$(at_return_code)"
 }
