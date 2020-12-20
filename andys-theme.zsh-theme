@@ -63,8 +63,12 @@ at_git_branch() {
   fi
 }
 
+at_virtualenv_info {
+ [ $CONDA_PROMPT_MODIFIER ] && echo `basename $CONDA_PROMPT_MODIFIER`
+}
+
 at_conda_env () {
-  print -n "$CONDA_PROMPT_MODIFIER"
+  print -n "%{$fg[green]%}$(virtualenv_info)%{$reset_color%}%"
 }
 
 ## Prompt Generation
