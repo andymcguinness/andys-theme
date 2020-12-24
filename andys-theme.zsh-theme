@@ -30,9 +30,7 @@ at_current_dir() {
 }
 
 at_conda_venv() {
-  if [ $CONDA_PROMPT_MODIFIER != '(base)' ] then
-    print -n "%{$terminfo[normal]$fg[brown]%}$CONDA_PROMPT_MODIFIER%{$reset_color%}"
-  fi
+  print -n "%{$fg[brown]%}$CONDA_PROMPT_MODIFIER%{$reset_color%}"
 }
 
 at_rvm_ruby() {
