@@ -8,7 +8,7 @@ It's minimal, but features full Git support.
 
 Features Anaconda virtual environment name, username@hostname, directory, Git status (if applicable), and RVM status (if applicable).
 
-!(Screenshot_1)[/Screenshot_1.png?raw=true]
+![Screenshot of Theme](/Screenshot_1.png?raw=true "Screenshot of Theme")
 
 ## Modifying
 
