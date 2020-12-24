@@ -29,14 +29,8 @@ at_current_dir() {
   print -n "%{$terminfo[normal]$fg[blue]%} %~%{$reset_color%}"
 }
 
-at_rvm_ruby() {
-  if which rvm-prompt &> /dev/null; then
-    print -n "$GEM %{$fg[red]%}$(rvm-prompt i v g)%{$reset_color%}"
-  else
-    if which rbenv &> /dev/null; then
-      print -n "$GEM %{$fg[red]%}$(rbenv version | sed -e "s/ (set.*$//")%{$reset_color%}"
-    fi
-  fi
+at_conda_venv() {
+  print -n $CONDA_PROMPT_MODIFIER
 }
 
 at_git_branch() {
@@ -70,7 +64,7 @@ at_prompt_precmd() {
 }
 
 at_generate_prompt() {
-  print -n "╭─$(at_user_host) $(at_current_dir) $(at_rvm_ruby) $(at_git_branch)
+  print -n "╭─$(at_conda_venv) $(at_user_host) $(at_current_dir) $(at_git_branch)
 ╰─%B$%b "
   RPS1="$(at_return_code)"
 }
