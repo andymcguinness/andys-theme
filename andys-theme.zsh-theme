@@ -30,7 +30,7 @@ at_current_dir() {
 }
 
 at_conda_venv() {
-  print -n "%{$fg[brown]%}$CONDA_PROMPT_MODIFIER%{$reset_color%}"
+  print -n "%{$fg[yellow]%}$CONDA_PROMPT_MODIFIER%{$reset_color%}"
 }
 
 at_rvm_ruby() {
