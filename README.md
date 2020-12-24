@@ -6,15 +6,19 @@ This is a custom theme I made for myself, modified from the bira theme.
 
 It's minimal, but features full Git support.
 
-Features username@hostname, directory, Git status, and RVM status.
+Features Anaconda virtual environment name, username@hostname, directory, Git status (if applicable), and RVM status (if applicable).
+
+!(Screenshot_1)[Screenshot_1.png]
 
 ## Modifying
 
 Like what you see? Feel free to fork and go wild!
 
+Alternately, feel free to open an issue, and I'll see what I can do!
+
 ## To Do
 
-[ ] Add conda virtual environment support
+[X] Add conda virtual environment support
 
 ## License
 
